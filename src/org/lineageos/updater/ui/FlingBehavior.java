@@ -2,6 +2,9 @@ package org.lineageos.updater.ui;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import com.google.android.material.appbar.AppBarLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 

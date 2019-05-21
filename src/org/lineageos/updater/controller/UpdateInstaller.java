@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.os.SystemProperties;
+import androidx.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;

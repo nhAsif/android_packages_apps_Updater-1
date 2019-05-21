@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.PowerManager;
 import android.os.SystemProperties;
-
 import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
