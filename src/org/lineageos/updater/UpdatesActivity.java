@@ -240,6 +240,7 @@ public class UpdatesActivity extends UpdatesListActivity {
                 if (hasPermission) {
                   performFileSearch();
                 }
+                return true;
             }
         }
         return super.onOptionsItemSelected(item);
@@ -503,11 +504,9 @@ public class UpdatesActivity extends UpdatesListActivity {
                 .show();
     }
     private void performFileSearch() {
-        Intent chooseFile;
-        Intent intent;
-        chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        Intent chooseFile = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         chooseFile.setType("application/zip");
-        intent = Intent.createChooser(chooseFile, "Choose a file");
+        Intent intent = Intent.createChooser(chooseFile, "Choose a file");
         startActivityForResult(intent, READ_REQUEST_CODE);
     }
 
@@ -569,5 +568,4 @@ public class UpdatesActivity extends UpdatesListActivity {
             mAdapter.notifyDataSetChanged();
         }
     }
-}
 }

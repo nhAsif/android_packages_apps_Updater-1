@@ -75,7 +75,7 @@
     <string name="menu_export_update">Export update</string>
     <string name="menu_show_changelog">Show changelog</string>
     <string name="menu_changelog_url" translatable="false">https://raw.githubusercontent.com/Project-Awaken/OTA/master/changelogs/{device}.txt<xliff:g id="device_name">%1$s</xliff:g></string>
-    <string name="menu_local_update">local installation</string>
+    <string name="menu_local_update">Choose file ...</string>
 
     <string name="snack_updates_found">New updates found</string>
     <string name="snack_no_updates_found">No new updates found</string>
