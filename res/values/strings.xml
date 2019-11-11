@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2017 The LineageOS Project
+     Copyright (C) 2018 The SuperiorOS Project
+     Copyright (C) 2019-2020 CandyRoms
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -107,6 +109,7 @@
     <string name="action_info">Info</string>
     <string name="action_delete">Delete</string>
     <string name="action_cancel">Cancel</string>
+	<string name="action_changelog">Changelog</string>
 
     <string name="confirm_delete_dialog_title">Delete file</string>
     <string name="confirm_delete_dialog_message">Delete the selected update file?</string>
@@ -156,4 +159,7 @@
     <string name="update_failed_channel_title">Update failed</string>
     <string name="menu_update_channel">Update channel</string>
     <string name="dialog_custom_updater_channel">Enter URL for custom updater channel here</string>
+
+	<string name="changelog_url" translatable="false">https://raw.githubusercontent.com/Project-Awaken/OTA/master/changelogs/{device}.txt<xliff:g id="device_name">%1$s</xliff:g>.txt</string>
+    <string name="changelog_fail">Failed to retrieve changelog or changelog unavailable</string>
 </resources>
