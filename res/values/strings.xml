@@ -160,6 +160,5 @@
     <string name="menu_update_channel">Update channel</string>
     <string name="dialog_custom_updater_channel">Enter URL for custom updater channel here</string>
 
-	<string name="changelog_url" translatable="false">https://raw.githubusercontent.com/Project-Awaken/OTA/master/changelogs/{device}.txt<xliff:g id="device_name">%1$s</xliff:g>.txt</string>
     <string name="changelog_fail">Failed to retrieve changelog or changelog unavailable</string>
 </resources>
