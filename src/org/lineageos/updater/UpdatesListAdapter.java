@@ -84,6 +84,10 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
     private static final String GAPPS_SUBSTRING = "gapps";
     private static final String TWRP_SUBSTRING = "twrp";
 
+    private static final int BATTERY_PLUGGED_ANY = BatteryManager.BATTERY_PLUGGED_AC
+            | BatteryManager.BATTERY_PLUGGED_USB
+            | BatteryManager.BATTERY_PLUGGED_WIRELESS;
+
     private final float mAlphaDisabledValue;
 
     private List<String> mDownloadIds;
