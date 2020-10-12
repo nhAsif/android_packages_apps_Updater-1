@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.icu.text.DateFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -35,13 +36,6 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.preference.PreferenceManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
-import androidx.recyclerview.widget.SimpleItemAnimator;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,6 +51,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -100,6 +95,8 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     private View mRefreshIconView;
     private RotateAnimation mRefreshAnimation;
+
+    private boolean mConfigChanged = false;
 
     private static final int READ_REQUEST_CODE = 42;
 
@@ -218,6 +215,12 @@ public class UpdatesActivity extends UpdatesListActivity {
             unbindService(mConnection);
         }
         super.onStop();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mConfigChanged = true;
     }
 
     @Override
@@ -520,7 +523,7 @@ public class UpdatesActivity extends UpdatesListActivity {
         super.onActivityResult(requestCode, resultCode, resultData);
     }
 
-     private void addLocalUpdateInfo(Uri uri) {
+    private void addLocalUpdateInfo(Uri uri) {
         String path = FileUtils.getRealPath(this, uri);
         Update localUpdate = new Update();
         File file = new File(path);
