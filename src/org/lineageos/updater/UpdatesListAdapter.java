@@ -612,10 +612,8 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         infoDialog = new AlertDialog.Builder(mActivity)
                 .setTitle(R.string.blocked_update_dialog_title)
                 .setPositiveButton(android.R.string.ok, null)
-                .setMessage(R.string.blocked_update_dialog_message)
+                .setMessage(R.string.blocked_update_dialog_summary)
                 .show();
-        TextView textView = (TextView) infoDialog.findViewById(android.R.id.message);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private class getChangelogDialog extends AsyncTask<String, Void, String> {
