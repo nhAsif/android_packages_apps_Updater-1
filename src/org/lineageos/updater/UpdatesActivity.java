@@ -146,12 +146,15 @@ public class UpdatesActivity extends UpdatesListActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView headerTitle = (TextView) findViewById(R.id.header_title);
-        headerTitle.setText(getString(R.string.header_title_text));
+        final TextView headerTitle = (TextView) findViewById(R.id.header_title);
+        headerTitle.setText(getString(R.string.header_title_text,
+                BuildInfoUtils.getBuildVersion()));
 
-        TextView headerVersion = (TextView) findViewById(R.id.header_build_version);
-        headerVersion.setText(SystemProperties.get(Constants.PROP_BUILD_VERSION) + " ● " +
-                    SystemProperties.get(Constants.PROP_DEVICE));
+        updateLastCheckedString();
+
+        final TextView headerBuildDate = (TextView) findViewById(R.id.header_build_date);
+        headerBuildDate.setText(StringGenerator.getDateLocalizedUTC(this,
+                DateFormat.LONG, BuildInfoUtils.getBuildDateTimestamp()));
 
         // Switch between header title and appbar title minimizing overlaps
         final CollapsingToolbarLayout collapsingToolbar =
@@ -341,6 +344,7 @@ public class UpdatesActivity extends UpdatesListActivity {
             final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             final long millis = System.currentTimeMillis();
             preferences.edit().putLong(Constants.PREF_LAST_UPDATE_CHECK, millis).apply();
+            updateLastCheckedString();
             if (json.exists() && Utils.isUpdateCheckEnabled(this) &&
                     Utils.checkForNewUpdates(json, jsonNew)) {
                 UpdatesCheckReceiver.updateRepeatingUpdatesCheck(this);
@@ -417,6 +421,17 @@ public class UpdatesActivity extends UpdatesListActivity {
                 showSnackbar(R.string.snack_download_verified, Snackbar.LENGTH_LONG);
                 break;
         }
+    }
+
+    private void updateLastCheckedString() {
+        final SharedPreferences preferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        long lastCheck = preferences.getLong(Constants.PREF_LAST_UPDATE_CHECK, -1) / 1000;
+        String lastCheckString = getString(R.string.header_last_updates_check,
+                StringGenerator.getDateLocalized(this, DateFormat.LONG, lastCheck),
+                StringGenerator.getTimeLocalized(this, lastCheck));
+        TextView headerLastCheck = (TextView) findViewById(R.id.header_last_check);
+        headerLastCheck.setText("Last update check: " + lastCheckString);
     }
 
     @Override
