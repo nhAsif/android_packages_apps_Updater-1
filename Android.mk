@@ -14,6 +14,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.appcompat_appcompat \
     androidx.cardview_cardview \
     androidx.localbroadcastmanager_localbroadcastmanager \
+    androidx.documentfile_documentfile \
     androidx.preference_preference \
     androidx.recyclerview_recyclerview \
     androidx.annotation_annotation
